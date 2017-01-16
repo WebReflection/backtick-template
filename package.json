@@ -4,10 +4,9 @@
   "description": "ES2015 backticks for ES3+ engines",
   "main": "backtick-template.js",
   "scripts": {
-    "test": "node test.js",
+    "test": "istanbul cover test.js",
     "size": "cat backtick-template.js | wc -c;cat backtick-template.min.js | wc -c;gzip -c backtick-template.min.js | wc -c",
     "minify": "uglifyjs backtick-template.js --comments=all --compress --mangle -o backtick-template.min.js",
-    "cover": "istanbul cover test.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
