@@ -33,7 +33,6 @@ function template(fn, $str, $object) {'use strict';
       i = length;
     }
   }
-  debugger;
   if (hasTransformer) {
     str = 'function' + (Math.random() * 1e5 | 0);
     if (strings.length === values.length) strings.push('""');
