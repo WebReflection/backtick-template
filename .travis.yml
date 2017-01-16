@@ -9,3 +9,5 @@ branches:
     - master
 before_script:
   - "npm install consolemd"
+after_success:
+  - "npm run coveralls"

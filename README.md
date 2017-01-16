@@ -1,6 +1,4 @@
-# ES2015 backticks for ES3+ engines
-
-1:1 native ``backticks`${template}``` 100% code coverage.
+# ES2015 backticks for ES3+ engines [![build status](https://secure.travis-ci.org/WebReflection/backtick-template.svg)](http://travis-ci.org/WebReflection/backtick-template) [![Coverage Status](https://coveralls.io/repos/WebReflection/backtick-template/badge.svg?branch=master)](https://coveralls.io/r/WebReflection/backtick-template?branch=master)
 
 ```js
 var template = require('backtick-template');
@@ -22,3 +20,5 @@ transform `some ${info}` ===
     'some ${info}'.template(transform, {info});
 
 ```
+
+MIT Style License
