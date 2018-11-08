@@ -1,5 +1,5 @@
 const console = require('consolemd');
-const template = require('./backtick-template');
+const template = require('./cjs');
 
 const test = (chunks, ...rest) =>
     chunks.reduce((prev, curr, i) => prev + rest[i - 1] + curr);
@@ -100,6 +100,15 @@ console.log('"hm ... ${f({a: v})}".template()');
 console.assert(test`hm ... ${f({a: v})}` === 'hm ... ${f({a: v})}'.template({f, v}));
 console.assert(test`hm ... ${f({a: v})}` === 'hm ... ${f({a: v})}'.template(test, {f, v}));
 
+
+var long = Array(33554432).join('$');
+console.log('32M string');
+console.assert(long.template() === long.template());
+console.assert(template.$ === 33554431);
+console.assert('abc'.template() === 'abc'.template());
+console.assert('abc'.template() === 'abc'.template());
+console.log('after reset');
+console.assert(template.$ === 3);
 
 console.log('');
 console.timeEnd('test');

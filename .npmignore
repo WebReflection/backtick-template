@@ -3,3 +3,4 @@ coverage/*
 .travis.yml
 .gitignore
 test.js
+package-lock.json

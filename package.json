@@ -2,11 +2,16 @@
   "name": "backtick-template",
   "version": "0.1.1",
   "description": "ES2015 backticks for ES3+ engines",
-  "main": "backtick-template.js",
+  "main": "cjs/index.js",
+  "module": "esm/index.js",
+  "unpkg": "min.js",
   "scripts": {
+    "build": "npm run esm && npm run cjs && npm run min && npm test",
+    "esm": "cp index.js esm/ && echo 'export default template;' >> esm/index.js",
+    "cjs": "cp index.js cjs/ && echo 'module.exports = template;' >> cjs/index.js",
     "test": "istanbul cover test.js",
-    "size": "cat backtick-template.js | wc -c;cat backtick-template.min.js | wc -c;gzip -c backtick-template.min.js | wc -c",
-    "minify": "uglifyjs backtick-template.js --comments=all --compress --mangle -o backtick-template.min.js",
+    "size": "cat index.js | wc -c;cat min.js | wc -c;gzip -c min.js | wc -c",
+    "min": "uglifyjs index.js --comments=all --compress --mangle -o min.js",
     "coveralls": "cat ./coverage/lcov.info | coveralls"
   },
   "repository": {
@@ -27,9 +32,9 @@
   },
   "homepage": "https://github.com/WebReflection/backtick-template#readme",
   "devDependencies": {
-    "consolemd": "^0.1.2",
-    "coveralls": "^2.11.15",
+    "consolemd": "^0.2.1",
+    "coveralls": "^3.0.2",
     "istanbul": "^0.4.5",
-    "uglify-js": "^2.7.5"
+    "uglify-js": "^2.8.29"
   }
 }

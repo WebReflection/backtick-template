@@ -1,0 +1,6 @@
+/*! (C) 2017-2018 Andrea Giammarchi - MIT Style License */
+function template(t,e,n){"use strict";
+// reset cache every 32M
+33554432<template.$&&(template._={},template.$=0);var a,l="function"==typeof t,s=l?e:t,i=l?n:e,p=template._,r=p.hasOwnProperty(s),h=r?p[s]:p[s]=template.parse(s),u=h.chunks,c=h.values;if(
+// add str length only if not known
+r||(template.$+=s.length),l)s="function"+(1e5*Math.random()|0),a=[s,"with(this)return "+s+"(["+u+"]"+(c.length?","+c.join(","):"")+")"];else{a=u.slice(0,1);for(var o=1,f=u.length;o<f;o++)a.push(c[o-1],u[o]);a=["with(this)return "+a.join("+")]}return Function.apply(null,a).apply(i,l?[t]:[])}template._={},template.$=0,template.asMethod=function(t,e){"use strict";return"function"==typeof t?template(t,this,e):template(this,t)},template.parse=function(t){for(var e=JSON.stringify,n=0,a=0,l=0,s=0,i=t.length,p=s<i?[]:['""'],r=[];s<i;)if(-1<(n=t.indexOf("${",s))){for(p.push(e(t.slice(s,n))),n+=2,a=n,l=1;a<i;){switch(t.charAt(a++)){case"}":--l;break;case"{":++l}if(l<1){r.push("("+t.slice(n,a-1)+")");break}}s=a}else p.push(e(t.slice(s))),s=i;return p.length===r.length&&p.push('""'),{chunks:p,values:r}};
